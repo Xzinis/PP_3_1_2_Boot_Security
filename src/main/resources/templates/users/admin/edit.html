@@ -23,6 +23,14 @@
   <input type="text" th:field="*{password}" id="password"/>
   <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
   <br/>
+  <span>Выбор роли</span>
+  <br>
+  <input name="roles" type="checkbox"
+         th:each="role : ${allRoles}"
+         th:text="${role.name}"
+         th:value="${role.id}"
+  />
+  <br>
   <input type="submit" value="Update!"/>
 </form>
 <a href="/logout">Logout</a>
