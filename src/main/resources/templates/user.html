@@ -3,13 +3,14 @@
 <head>
     <title>Spring Security Example</title>
 </head>
+
 <body>
-<h1>User, welcome spring boot security page!</h1>
+<p th:text="${'Name: ' + user.getUsername() + ', ' + user.getAge() + ' age'}">VALUE</p>
+<p th:text="${'Email: ' + user.getEmail()}">VALUE</p>
 
 
-<p th:text="${'Name: ' + User.getUsername() + ', ' + User.getAge() + ' age'}">VALUE</p>
-<p th:text="${'Email: ' + User.getEmail()}">VALUE</p>
-<p th:text="${'Yours id' + User.getId()}">VALUE</p>
+<p>Roles:
+    <a th:each="role : ${user.getRoles()}">[[${role.getName()}]]</a></p>
 
 <a href="/logout">Logout</a>
 

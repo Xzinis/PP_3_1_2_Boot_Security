@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -33,8 +34,6 @@ public class User implements UserDetails {
 
     @ManyToMany
     @JoinTable(name = "users_roles",
-//               joinColumns = @JoinColumn(name = "user_id", referencedColumnName="id"),
-//               inverseJoinColumns = @JoinColumn(name="role_id", referencedColumnName="id"))
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name="role_id"))
     private Collection<Role> roles;
@@ -46,8 +45,6 @@ public class User implements UserDetails {
     public User() {
 
     }
-
-
     public User(String name, int age) {
         this.username = name;
         this.age = age;
@@ -73,7 +70,6 @@ public class User implements UserDetails {
         this.roles = roles;
     }
 
-  //  ----------------------------------------------------
     public int getId() {
         return id;
     }
@@ -117,6 +113,7 @@ public class User implements UserDetails {
     public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
+
 
     @Override
     public String toString() {
